@@ -4,14 +4,14 @@ node {
 	}
 
 	stage('Build image') {
-		app = docker.build("testproject")
+		app = docker.build("dockerjenkinspipelineproj")
 	}
 
 	stage('Deploy') {
-		sh ("docker run -d -p 8086:80 testproject")
+		sh ("docker run -d -p 8086:80 dockerjenkinspipelineproj")
 	}
 	
 	stage('Remove old images') {
-		sh("docker rmi testproject:latest -f")
+		sh("docker rmi dockerjenkinspipelineproj:latest -f")
    }
 }
